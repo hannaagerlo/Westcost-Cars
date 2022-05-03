@@ -1,6 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using Vehicles_API.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
+
+
 // Add services to the container.
+
+builder.Services.AddDbContext<VehicleContext>(options => 
+options.UseSqlite(builder.Configuration.GetConnectionString("Sqlite")));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
